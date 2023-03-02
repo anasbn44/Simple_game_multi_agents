@@ -16,11 +16,11 @@ import java.util.Random;
 
 public class ServerAgent extends Agent {
     private int magicNumber;
-    private Agent server;
+//    private Agent server;
     @Override
     protected void setup() {
         magicNumber = new Random().nextInt(10);
-        server = this;
+//        server = this;
         System.out.println("magicNumber" + magicNumber);
         addBehaviour(new CyclicBehaviour() {
             @Override
@@ -43,7 +43,7 @@ public class ServerAgent extends Agent {
                             try {
                                 SearchConstraints c = new SearchConstraints();
                                 c.setMaxResults ((long)-1);
-                                agents = AMSService.search(server, new AMSAgentDescription(), c);
+                                agents = AMSService.search(getAgent(), new AMSAgentDescription(), c);
                             }
                             catch (Exception e) {}
                             for (int i=0; i<agents.length;i++){
